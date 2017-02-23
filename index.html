@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+<head>
+	<meta charset="UTF-8">
+	<title>Bounty Hunter</title>
+	
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="styles.css">
+
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js'></script>
+
+</head>
+<body ng-controller='mainController'>
+	
+	<div class="row">
+		<form class="col s4 offset-s4">
+			<div class="row">
+				<div class="input-field col m6 col s12" >
+					<input type="text" placeholder='First Name' ng-model='bounty.firstName' class="validate">
+					<input type="text" placeholder='Last Name' ng-model='bounty.lastName' class='validate'>
+					<input type="number" placeholder='Bounty Amount' ng-model='bounty.bountyAmount' class='validate'>
+				</div>
+				<div class="input-field col m6 col s12">
+					<p>
+					<input name="group1" type="radio" id="test1" ng-model='bounty.living' ng-value='living'/>
+      		<label for="test1">Living</label>
+      	
+   				<input name="group1" type="radio" id="test2" ng-model='bounty.living' ng-value='dead' />
+      		<label for="test2">Dead</label>
+      	</p>
+				</div>
+				<div class="switch col m6 col s12">
+   				<p>
+   				 <label>
+     				 Sith
+     			 <input type="checkbox" ng-model="bounty.type" ng-true-value="'Jedi'" ng-false-value="'Sith'" >
+     			 <span class="lever"></span>
+     			 	Jedi
+    			</label>
+    		</p>
+  			</div>
+  			<div class="col m12">
+  				<a class="waves-effect waves-light btn submit" ng-click='addBounty(bounty)'>Submit</a>
+  			</div>
+					
+					
+					
+ 				</div>
+		</form>
+	</div>
+
+	<div class="row">
+		<div class="col s4" ng-repeat='bounty in bounties'>
+			<h2>{{bounty.firstName}} {{bounty.lastName}}</h2>
+			<h3>{{bounty.bountyAmount | currency:undefined:0}}</h3>
+			<h3>{{bounty.living | liveDie}}</h3>
+			<h3>{{bounty.type}}</h3>
+
+		</div>
+	</div>
+	
+	
+
+
+<script src="app.js"></script>
+<!-- <script src="server.js"></script> -->
+</body>
+</html>
